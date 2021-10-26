@@ -12,10 +12,6 @@ const getStyles = (mode) => ({
     },
     text: {
         color: theme[mode].text
-    },
-    form: {
-        backgroundColor: theme[mode].foreGroundColor,
-        paddingRight: '6.5rem'
     }
 });
 
@@ -26,7 +22,7 @@ const Search = () => {
         <Card style={(styles.card)}>
             <Form>
                 <div className="w-100 position-relative">
-                <Form.Control type="text" style={(styles.form)} placeholder="Search Github accounts" className="p-4"/>
+                <Form.Control type="text" style={{paddingRight: '6.5rem'}} placeholder="Search Github accounts" className="p-4"/>
                 <Button variant="primary" type="submit" className="me-3 position-absolute top-50 end-0 translate-middle-y">
                     Search
                 </Button>

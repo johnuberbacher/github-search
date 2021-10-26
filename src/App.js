@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -15,6 +15,8 @@ const getStyles = (mode) => ({
     backgroundColor: theme[mode].backgroundColor
   }
 });
+
+
 
 function App() {
   const {mode} = useContext(ThemeContext);

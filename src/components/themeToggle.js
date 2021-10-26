@@ -24,19 +24,23 @@ const ThemeToggle = () => {
             return <BiMoon className="text-primary" size="25px"></BiMoon>
     }
     return (
-        <Form className="d-flex flex-row align-items-center justify-content-end mb-3">
-            <label for="custom-switch">
-                {renderThemeToggleIcon()}
-            </label>
-            <Form.Check 
-            style={{transform: 'scale(1.25)'}}
-                checked={mode === "light" ? false : true}
-                className="fw-bold ms-3"
-                type="switch"
-                id="custom-switch"
-                onChange={setTheme}
-            />
-        </Form>
+        <div className="d-flex justify-content-end">
+            <Form>
+                <label 
+                className="d-flex flex-row align-items-center justify-content-end py-3" 
+                for="custom-switch">
+                    {renderThemeToggleIcon()}
+                    <Form.Check 
+                    style={{transform: 'scale(1.25)'}}
+                        checked={mode === "light" ? false : true}
+                        className="fw-bold ms-3"
+                        type="switch"
+                        id="custom-switch"
+                        onChange={setTheme}
+                    />
+                </label>
+            </Form>
+        </div>
     )
 }
 
