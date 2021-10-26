@@ -6,30 +6,19 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Body from './components/body';
 import Search from './components/search';
-import {theme} from "./components/theme";
-import { ThemeContext } from "./ThemeProvider";
-import ThemeToggle from './components/themeToggle';
+import ThemeToggle from "./components/themeToggle";
 
-const getStyles = (mode) => ({
-  app: {
-    backgroundColor: theme[mode].backgroundColor
-  }
-});
-
-
-
-function App() {
-  const {mode} = useContext(ThemeContext);
-  const styles = getStyles(mode);
-  return (
-    <div className="App d-flex align-items-start align-items-sm-center" style={(styles.app)}>
-      <Container>
-        <ThemeToggle></ThemeToggle>
-        <Search></Search>
-        <Body></Body>
-      </Container>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App d-flex align-items-start align-items-sm-start">
+        <Container>
+          <ThemeToggle></ThemeToggle>
+          <Body accounts={this.accounts}></Body>
+        </Container>
+      </div>
+    )
+  };
 }
 
 export default App;

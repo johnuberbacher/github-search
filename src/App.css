@@ -1,5 +1,30 @@
 * {
-  transition: 0.3s backgroundColor, 0.3s background, 0.3s color;
+  transition: 0.3s backgroundColor, 0.3s background;
+}
+html {
+  --textColor: var(--bs-body-color);
+  --body-bg: var(--bs-body-bg);
+  --foreground-bg: #ffffff;
+  --primaryTextColor: #00000020;
+}
+html.dark {
+  --textColor: #ffffff;
+  --body-bg: #141c2f;
+  --foreground-bg: #1f2a48;
+  --highlightColor: #323e5c;
+}
+html.dark .card {
+  color: var(--textColor);
+  background: var(--foreground-bg)!important;
+}
+.dark .form-control {
+  color: var(--textColor);
+}
+body {
+  background:  var(--body-bg);
+}
+body, p {
+  color: var(--textColor)
 }
 html,
 body,
@@ -9,16 +34,9 @@ body,
   min-height: 100%;
 }
 .card {
+  background: var(--foreground-bg);
   transition: 0.3s all;
 }
 .card:hover {
   box-shadow: 0 0.2rem 0.5rem 0.25rem rgb(0 0 0 / 5%);
-}
-
-.dark {
-  color: White!important;
-  background: #141c2f!important;
-}
-.dark .card {
-  background: #1f2a48!important;
 }

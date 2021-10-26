@@ -1,28 +1,39 @@
-import React, {useContext} from 'react';
-import { ThemeContext } from '../ThemeProvider';
+import React, {useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 import { BiMoon, BiSun } from "react-icons/bi";
+import { useMediaQuery } from 'react-responsive'
 
-const getStyles = (mode) => ({
-    icon: {
-
-    },
-    toggle: {
-
-    }
-});
+const darkModeClass = "dark";
 
 const ThemeToggle = () => {
-    const { setTheme, mode } = useContext(ThemeContext);
-    const styles = getStyles(mode);
+    const systemPrefersDark = useMediaQuery(
+        {
+            query: "(prefers-color-scheme: dark)"
+        },
+        undefined,
+        prefersDark => {
+            setDarkMode(prefersDark);
+        }
+    );
+    const [isDarkMode, setDarkMode] = useState(systemPrefersDark);
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add(darkModeClass)
+        } else {
+            document.documentElement.classList.remove(darkModeClass)
+        }
+    }, [isDarkMode]);
+
     const renderThemeToggleIcon = () => {
-        if (mode === "light") 
+        if (!isDarkMode) 
             return <BiSun className="text-primary" size="25px"></BiSun>;
         else
             return <BiMoon className="text-primary" size="25px"></BiMoon>
     }
+    
+    
     return (
         <div className="d-flex justify-content-end">
             <Form>
@@ -32,11 +43,12 @@ const ThemeToggle = () => {
                     {renderThemeToggleIcon()}
                     <Form.Check 
                     style={{transform: 'scale(1.25)'}}
-                        checked={mode === "light" ? false : true}
+                        checked={isDarkMode}
+                        onChange={event => setDarkMode(event.target.checked)}
+                        aria-label="Toggle Theme"
                         className="fw-bold ms-3"
                         type="switch"
                         id="custom-switch"
-                        onChange={setTheme}
                     />
                 </label>
             </Form>
