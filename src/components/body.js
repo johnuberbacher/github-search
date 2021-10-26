@@ -15,11 +15,15 @@ class Body extends React.Component {
         };
     }
     componentDidMount() {
-        fetch( "https://jsonplaceholder.typicode.com/users")
+        let headers = {"Content-Type": "application/json"};
+        if ('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 ') {
+        headers["Authorization"] = `Token ${'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 '}`;
+        }
+        fetch( "https://api.github.com/search/users?q=type:user", {headers,})
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
-                    accounts: json,
+                    accounts: json.items,
                     DataisLoaded: true
                 });
             })
@@ -43,9 +47,9 @@ class Body extends React.Component {
                             <Col xl={6} className="my-3">
                                 <Card className="p-3 p-xl-4">
                                     <div class="d-flex flex-row align-items-center mb-3">
-                                        <div className="bg-dark rounded me-3" style={{minWidth: '70px', maxHeight: '70px', minHeight: '70px'}}></div>
+                                        <div className="rounded me-3" style={{backgroundImage: 'url(' + account.avatar_url + ')', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', minWidth: '70px', maxHeight: '70px', minHeight: '70px'}}></div>
                                         <div>
-                                            <h5>{account.name}<span className="text-secondary fw-light"> - {account.username}</span></h5>
+                                            <h5>{account.name}<span className="text-secondary fw-light"> - {account.login}</span></h5>
                                             <div className="mb-2 text-secondary">Denver, CO</div>
                                         </div>
                                     </div>
