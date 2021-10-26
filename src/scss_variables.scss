@@ -1,0 +1,27 @@
+$theme-colors: (
+    "primary": #ed2c49,
+    "light": #f5f7fb,
+    "info": tomato,
+    "dark": #141c2f
+);
+$primary:#ed2c49;
+$min-contrast-ratio: 3;
+$body-bg: #f5f7fb;
+$font-size-base: .9375rem;
+$btn-padding-y: 0.5rem;
+$btn-padding-y-sm: 0.5rem;
+$btn-padding-x-sm: 1.5rem;
+$btn-padding-x: 1.5rem;
+$btn-padding-x-lg: 1.5rem;
+$btn-font-size: $font-size-base;
+$btn-font-weight: 500;
+$btn-white-space: normal;
+$nav-link-padding-y: 0.75rem;
+$dropdown-item-padding-y: 0.75rem;
+$input-bg: transparent;
+$input-border-color: transparent;
+$input-padding-y: 1rem;
+$input-padding-x: 1.5rem;
+$box-shadow: 0 .25rem 1rem rgba(#eaecf3, 1.0);
+
+@import "~bootstrap/scss/bootstrap";

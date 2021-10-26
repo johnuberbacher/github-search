@@ -1,23 +1,31 @@
+import React, { useContext } from "react";
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
 import './App.css';
+import Container from 'react-bootstrap/Container';
+import Body from './components/body';
+import Search from './components/search';
+import {theme} from "./components/theme";
+import { ThemeContext } from "./ThemeProvider";
+import ThemeToggle from './components/themeToggle';
+
+const getStyles = (mode) => ({
+  app: {
+    backgroundColor: theme[mode].backgroundColor
+  }
+});
 
 function App() {
+  const {mode} = useContext(ThemeContext);
+  const styles = getStyles(mode);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App d-flex align-items-start align-items-sm-center" style={(styles.app)}>
+      <Container>
+        <ThemeToggle></ThemeToggle>
+        <Search></Search>
+        <Body></Body>
+      </Container>
     </div>
   );
 }
