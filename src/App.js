@@ -6,14 +6,12 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Body from './components/body';
 import Search from './components/search';
-import ThemeToggle from "./components/themeToggle";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App d-flex align-items-start align-items-sm-start">
+      <div className="App d-flex align-items-start">
         <Container>
-          <ThemeToggle></ThemeToggle>
           <Body accounts={this.accounts}></Body>
         </Container>
       </div>
